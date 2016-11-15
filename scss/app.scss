@@ -1,0 +1,39 @@
+@import 'normalize';
+
+.flex-container {
+    background: lightblue;
+    height: 300px;
+    margin: auto;
+    width: 500px;
+
+    display: flex;
+    // declaracion main-axis
+    flex-direction: row;
+    // alineacion main-axis
+    justify-content: space-around;
+    // alineacion cross-axis
+    align-items: flex-start;
+
+}
+
+.flex-item {
+    background: tomato;
+    color: #fff;
+    // height: 100px;
+    // width: 100px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:nth-child(2) {
+        font-size: 2em;
+
+    }
+    
+    &:nth-child(odd) {
+        background: teal;
+
+    }
+
+}
