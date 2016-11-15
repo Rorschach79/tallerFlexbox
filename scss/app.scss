@@ -1,39 +1,78 @@
 @import 'normalize';
+/*
+    MAIN SIZE -> MAIN AXIS (DEFAULT: WIDTH)
+    CROSS SIZE -> CROSS AXIS (DEFAULT: HEIGHT)
 
-.flex-container {
-    background: lightblue;
-    height: 300px;
-    margin: auto;
-    width: 500px;
+    CROSS SIZE:
+        1. - Se ha definido el tamaño de los items.
+        2. - No se ha definido el tamaño y no se ha definido align-items o align-content (strecht x defecto).
+        3. - No se define un tamaño pero se define align-items o align-content diferente de strecht
 
-    display: flex;
-    // declaracion main-axis
-    flex-direction: row;
-    // alineacion main-axis
-    justify-content: space-around;
-    // alineacion cross-axis
-    align-items: flex-start;
+    MAIN SIZE:
+        1. - Espacio disponible (todo el espacio que no ocupan los items) y espacio ocupado (espacio ocupado por los items y los margin de éstos).
+        2. - Al espacio disponible hay que restarle los margin, los margin nunca se colapsan en FLEXBOX
+        3. - box-sizing: border-box en los items!!!
+        4. - El espacio disponible podría ser negativo
+
+
+    FLEX-BASIS
+        me da el main-size del item, por defecto = width (si cambio el flex-direction del container a column pasaría a ser el height). Si se declara un width o un height que entre en conflicto con flex-basis el navegador SIEMPRE aplicará flex-basis
+
+    FLEX-GROW
+        Nos indica cómo va a crecer un elemento respecto a su BASIS... es el FACTOR DE CRECIMIENTO que se calcula en funcion del espacio disponible y de la suma de los flex-grow de los items
+
+        unidad de crecimiento = espacio disponible / suma de los flex grow
+
+    FLEX-SHRINK
+*/
+body {
+    background: #f0f0f0;
+}
+
+h1 {
+    color: steelblue;
+    text-align: center;
 
 }
 
-.flex-item {
-    background: tomato;
-    color: #fff;
-    // height: 100px;
-    // width: 100px;
-
+.container {
+    align-items: stretch;
+    /*predeterminado*/
+    background: lightblue;
     display: flex;
-    justify-content: center;
+    /*flex-direction: column;*/
+    height: 500px;
+    margin: auto;
+    width: 500px;
+
+}
+
+.item {
     align-items: center;
+    background: teal;
+    color: #fff;
+    display: flex;
+    flex-basis: 100px;
+    flex-grow: 1;
+    font-size: 20px;
+    font-weight: bold;
+    justify-content: center;
+    /*margin: 10px;*/
+    /*width: 150px;*/
+
+    &:nth-child(even) {
+        background: steelblue;
+
+    }
 
     &:nth-child(2) {
-        font-size: 2em;
-
-    }
-    
-    &:nth-child(odd) {
-        background: teal;
+        flex-grow: 7;
 
     }
 
+}
+
+footer {
+    margin: 2em 0 0;
+    text-align: center;
 }

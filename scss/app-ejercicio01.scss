@@ -1,0 +1,58 @@
+@import 'normalize';
+
+h1 {
+    color: steelblue;
+    text-align: center;
+}
+
+.flex-container {
+    background: lightblue;
+    height: 300px;
+    margin: auto;
+    width: 500px;
+
+    display: flex;
+    // declaracion main-axis
+    flex-direction: row;
+    // alineacion main-axis
+    justify-content: space-between;
+    // alineacion cross-axis
+    align-items: flex-start;
+
+}
+
+img {
+    // colocación de ESTE elemento en el eje cross,
+    // sobre-escribe el valor align-items del contenedor
+    align-self: flex-end;
+
+}
+
+.flex-item {
+    background: tomato;
+    color: #fff;
+    // height: 100px;
+    // width: 100px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:nth-child(2) {
+        font-size: 2em;
+        // colocación de ESTE elemento en el eje cross,
+        // sobre-escribe el valor align-items del contenedor
+        align-self: center;
+
+    }
+    
+    &:nth-child(odd) {
+        background: teal;
+
+    }
+
+}
+
+footer {
+    text-align: center;
+}
